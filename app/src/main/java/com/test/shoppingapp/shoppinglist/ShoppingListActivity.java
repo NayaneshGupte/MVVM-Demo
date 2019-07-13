@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import com.test.networkmodule.response.ShopListingResponse;
 import com.test.shoppingapp.BaseActivity;
@@ -22,18 +23,18 @@ public class ShoppingListActivity extends BaseActivity implements OnListFragment
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+        fab.setOnClickListener(view -> Snackbar.make(view, "Add Product", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
 
         ViewPager pager = findViewById(R.id.pager);
 
+        pager.setOffscreenPageLimit(2);
         pager.setAdapter(new ShoppingListPagerAdapter(getSupportFragmentManager()));
-
     }
 
 
     @Override
     public void onListFragmentInteraction(ShopListingResponse item) {
-
+        Toast.makeText(this, "Clicked " + item.name(), Toast.LENGTH_SHORT).show();
     }
 }

@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.test.networkmodule.response.ShopListingResponse;
 import com.test.shoppingapp.OnListFragmentInteractionListener;
 import com.test.shoppingapp.R;
+import com.test.shoppingapp.shoppinglist.ProductStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +39,22 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListViewHo
 
     @Override
     public void onBindViewHolder(final ShoppingListViewHolder holder, int position) {
-        holder.mItem = shopListingResponses.get(position);
-        holder.mIdView.setText(shopListingResponses.get(position).name());
-        holder.mContentView.setText("" + shopListingResponses.get(position).numOfLikes());
+        ShopListingResponse shopListingResponse = shopListingResponses.get(position);
+        holder.mItem = shopListingResponse;
+        holder.name.setText(shopListingResponse.name());
+        holder.numLikes.setText(String.valueOf(shopListingResponse.numOfLikes()));
+        holder.numComments.setText(String.valueOf(shopListingResponse.numOfComments()));
+        holder.price.setText(String.format("$%s", String.valueOf(shopListingResponse.price())));
+
+        if (ProductStatus.SOLD_OUT.equals(shopListingResponse.status())) {
+            holder.status.setVisibility(View.VISIBLE);
+        } else {
+            holder.status.setVisibility(View.GONE);
+        }
+
+        Glide.with(holder.imageProduct)
+                .load(shopListingResponse.photo())
+                .into(holder.imageProduct);
 
         holder.mView.setOnClickListener(v -> {
             if (null != listener) {

@@ -13,7 +13,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideNetworkSDK(): NetworkSDK {
-        return NetworkSDK.getInstance()
+        return NetworkSDK.instance
     }
 
     @Provides

@@ -2,12 +2,11 @@ package com.test.shoppingapp.di
 
 import android.arch.lifecycle.ViewModel
 import dagger.MapKey
-import java.lang.annotation.Documented
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
 import kotlin.reflect.KClass
 
-@Documented
+@MustBeDocumented
 @Target(
     AnnotationTarget.FUNCTION,
     AnnotationTarget.PROPERTY_GETTER,

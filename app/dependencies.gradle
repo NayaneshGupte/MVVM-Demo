@@ -1,0 +1,73 @@
+dependencies {
+    // Android Support dependencies
+    implementation deps.support_lib.support_annotations
+    implementation deps.support_lib.cardview
+    implementation deps.support_lib.design
+    implementation deps.support_lib.recyclerview
+    implementation deps.support_lib.support_v4
+    implementation deps.support_lib.customtabs
+    implementation deps.support_lib.preference
+    implementation deps.support_lib.vector_drawable
+
+    implementation deps.multidex
+    api deps.constraint_layout // Need to expose to app module for data binding
+
+
+    // RX Java
+    implementation deps.rxjava.main
+    implementation deps.rxjava.android
+
+    implementation deps.gson
+
+    // Retrofit and GSON
+    implementation deps.retrofit.main
+    implementation deps.retrofit.rxjava
+    implementation deps.retrofit.gson
+    implementation(deps.retrofit.xml) {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+        exclude module: 'xpp3'
+    }
+
+    // Dagger2
+    implementation deps.dagger.main
+    kapt deps.dagger.compiler
+    implementation deps.dagger.android
+    kapt deps.dagger.android_processor
+    implementation deps.dagger.android_support
+
+
+    // Glide
+    api deps.glide.runtime // api because of data binding
+    kapt deps.glide.compiler
+    implementation deps.glide.okhttp_integration
+
+    // ViewModel
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.reactivestreams
+    kapt deps.lifecycle.compiler
+
+    // internal modules
+    implementation deps.internal.networkmodule
+
+    //Auto value
+    implementation deps.auto_value.annotations
+    kapt deps.auto_value.compiler
+    implementation deps.auto_value_gson.annotations
+    // included again as annotation processor because of
+    // an issue https://github.com/rharter/auto-value-gson/issues/171
+    kapt deps.auto_value.annotations
+    kapt deps.auto_value_gson.compiler
+    kapt deps.auto_value_parcel
+
+
+    testImplementation deps.kotlin.std_lib
+    testImplementation deps.lifecycle.testing
+
+    implementation deps.kotlin.std_lib
+    implementation deps.kotlin.coroutine
+}
+
+
+
+

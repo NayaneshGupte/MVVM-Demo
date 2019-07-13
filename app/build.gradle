@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion versions.compile_sdk
+
+    defaultConfig {
+        applicationId "com.test.shoppingapp"
+        minSdkVersion versions.min_sdk
+        targetSdkVersion versions.target_sdk
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode versions.app_version
+        versionName "$versions.app_major.$versions.app_minor.$versions.app_patch"
+
+        // Enabling multidex support.
+        multiDexEnabled true
+
+    }
+
+    dataBinding {
+        enabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+
+        }
+
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    flavorDimensions "default"
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+apply from: 'dependencies.gradle'
+
+dependencies {
+    implementation 'com.android.support:support-v4:28.+'
+    implementation 'com.android.support:recyclerview-v7:28.+'
+}

@@ -22,7 +22,7 @@ public class AppInjector {
     }
 
     public static void init() {
-        ShoppingApplication.getInstance().registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
+        ShoppingApplication.Companion.getInstance().registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
 
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {

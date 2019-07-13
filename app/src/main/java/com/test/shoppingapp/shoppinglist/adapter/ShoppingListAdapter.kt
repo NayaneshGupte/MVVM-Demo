@@ -51,7 +51,7 @@ class ShoppingListAdapter(private val listener: OnListFragmentInteractionListene
             .into(holder.imageProduct)
 
         holder.mView.setOnClickListener {
-            listener?.onListFragmentInteraction(holder.mItem)
+            listener?.onListFragmentInteraction(holder.mItem!!)
         }
     }
 

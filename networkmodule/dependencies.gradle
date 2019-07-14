@@ -5,17 +5,10 @@ dependencies {
     implementation deps.rxjava.main
     implementation deps.rxjava.android
     implementation deps.retrofit.main
-    implementation deps.retrofit.scalar
     implementation deps.retrofit.rxjava
-    implementation deps.retrofit.gson
     implementation deps.retrofit.moshi
     implementation deps.retrofit.moshikotlin
     implementation deps.retrofit.moshiconverter
-    implementation(deps.retrofit.xml) {
-        exclude module: 'stax'
-        exclude module: 'stax-api'
-        exclude module: 'xpp3'
-    }
 
     implementation deps.okhttp.main
     implementation deps.okhttp.logging_interceptor
@@ -26,19 +19,6 @@ dependencies {
 
     kapt deps.dagger.compiler
     testAnnotationProcessor deps.dagger.compiler
-
-    //GSON
-    implementation deps.gson
-
-    //Auto value
-    implementation deps.auto_value.annotations
-    kapt deps.auto_value.compiler
-    implementation deps.auto_value_gson.annotations
-    // included again as annotation processor because of
-    // an issue https://github.com/rharter/auto-value-gson/issues/171
-    kapt deps.auto_value.annotations
-    kapt deps.auto_value_gson.compiler
-    kapt deps.auto_value_parcel
 
     implementation deps.kotlin.std_lib
     testImplementation deps.kotlin.std_lib

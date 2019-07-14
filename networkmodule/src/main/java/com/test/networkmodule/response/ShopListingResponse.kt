@@ -1,12 +1,12 @@
 package com.test.networkmodule.response
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class ShopListingResponse(
     val id: String,
     val name: String,
-    @SerializedName("num_likes") val numOfLikes: Int,
-    @SerializedName("num_comments") val numOfComments: Int,
+    @Json(name = "num_likes") val numOfLikes: Int,
+    @Json(name = "num_comments") val numOfComments: Int,
     val price: Int,
     val photo: String,
     val status: String

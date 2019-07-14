@@ -1,4 +1,4 @@
-Sample APP : 
+Sample APP
 ====
 
 Sample App demonstrating fetching JSON response from backend and loading data in RecyclerView.

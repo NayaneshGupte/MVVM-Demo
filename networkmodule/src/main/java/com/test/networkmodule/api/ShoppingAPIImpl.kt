@@ -8,6 +8,12 @@ import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 
+/**
+ * There could be multiple APIs which this implementation needs to handle.
+ * So don't bloat this class with actual implementation.
+ * Delegate this work to respective receiver.
+ *
+ */
 @Singleton
 class ShoppingAPIImpl @Inject
 constructor(private val shoppingReceiverProvider: Provider<ShoppingReceiver>) : ShoppingAPI {

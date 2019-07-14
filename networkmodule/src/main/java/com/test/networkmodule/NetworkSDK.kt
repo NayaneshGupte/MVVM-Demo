@@ -10,16 +10,18 @@ import javax.inject.Inject
 
 class NetworkSDK {
 
-    @set:Inject
-    internal var shoppingAPILazy: Lazy<ShoppingAPIImpl>? = null
+    @Inject
+    lateinit var shoppingAPILazy: Lazy<ShoppingAPIImpl>
 
     private var isSDKInitialized: Boolean = false
 
     val shoppingAPI: ShoppingAPI
-        get() = if (isSDKInitialized) {
-            shoppingAPILazy!!.get()
-        } else {
-            throw SDKNotInitializedException()
+        get() = when {
+            isSDKInitialized -> shoppingAPILazy.get()
+            else -> throw SDKNotInitializedException(
+                "Network SDK is not initialized," +
+                        "Please call the initialize method of SDK Manager"
+            )
         }
 
     fun initialize() {
@@ -30,15 +32,12 @@ class NetworkSDK {
     }
 
     companion object {
-
-        private val TAG = "NetworkSDK"
         private var INSTANCE: NetworkSDK? = null
-
 
         val instance: NetworkSDK
             get() {
-                if (INSTANCE == null) {
-                    INSTANCE = NetworkSDK()
+                when (INSTANCE) {
+                    null -> INSTANCE = NetworkSDK()
                 }
                 return INSTANCE!!
             }

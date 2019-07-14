@@ -6,9 +6,8 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-@Singleton
 @Module
-class NetworkModule {
+class NetworkSDKModule {
 
     @Provides
     @Singleton

@@ -11,21 +11,19 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
+/**
+ * ShoppingRepository takes care of fetching listing response for different categories displayed on home page.
+ * Even though ViewModel could do that it's not a good idea to bloat VM with data fetching logic because
+ * it could be doing that for many different APIs
+ */
 class ShoppingRepository @Inject
 constructor(private val shoppingAPI: ShoppingAPI) {
 
-    private val mensShoppingList: MutableLiveData<List<ShopListingResponse>>
-    private val womensShoppingList: MutableLiveData<List<ShopListingResponse>>
-    private val allShoppingList: MutableLiveData<List<ShopListingResponse>>
+    private val mensShoppingList: MutableLiveData<List<ShopListingResponse>> = MutableLiveData()
+    private val womensShoppingList: MutableLiveData<List<ShopListingResponse>> = MutableLiveData()
+    private val allShoppingList: MutableLiveData<List<ShopListingResponse>> = MutableLiveData()
 
-    private val compositeDisposable: CompositeDisposable
-
-    init {
-        this.compositeDisposable = CompositeDisposable()
-        this.mensShoppingList = MutableLiveData()
-        this.womensShoppingList = MutableLiveData()
-        this.allShoppingList = MutableLiveData()
-    }
+    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     fun getShoppingListForMen() {
         val disposable = shoppingAPI.shoppingListForMen
@@ -89,7 +87,6 @@ constructor(private val shoppingAPI: ShoppingAPI) {
     }
 
     companion object {
-
         private val TAG = "ShoppingRepository"
     }
 

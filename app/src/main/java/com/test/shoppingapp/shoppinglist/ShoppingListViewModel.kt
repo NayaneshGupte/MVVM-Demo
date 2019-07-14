@@ -39,8 +39,8 @@ constructor(private val shoppingRepository: ShoppingRepository) : ViewModel() {
     }
 
     companion object {
-        private val ALL = 0
-        private val MEN = 1
-        private val WOMEN = 2
+        private const val ALL = 0
+        private const val MEN = 1
+        private const val WOMEN = 2
     }
 }

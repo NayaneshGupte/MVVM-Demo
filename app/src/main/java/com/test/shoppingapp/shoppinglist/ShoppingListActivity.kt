@@ -35,6 +35,6 @@ class ShoppingListActivity : BaseActivity(), OnListFragmentInteractionListener {
 
 
     override fun onListFragmentInteraction(item: ShopListingResponse) {
-        Toast.makeText(this, "Clicked " + item.name(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Clicked " + item.name, Toast.LENGTH_SHORT).show()
     }
 }

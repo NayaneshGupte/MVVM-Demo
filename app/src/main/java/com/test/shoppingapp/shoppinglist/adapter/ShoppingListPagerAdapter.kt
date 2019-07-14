@@ -6,14 +6,14 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 
 import com.test.shoppingapp.shoppinglist.ItemExtras
-import com.test.shoppingapp.shoppinglist.fragment.ItemFragment
+import com.test.shoppingapp.shoppinglist.fragment.ShoppingListFragment
 
 class ShoppingListPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     private val tabTitles = arrayOf("All", "Men", "Women")
 
     override fun getItem(position: Int): Fragment {
-        return ItemFragment.newInstance(ItemExtras(position))
+        return ShoppingListFragment.newInstance(ItemExtras(position))
     }
 
     override fun getCount(): Int {

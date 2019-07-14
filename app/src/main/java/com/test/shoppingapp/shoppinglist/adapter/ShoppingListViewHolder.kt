@@ -15,5 +15,5 @@ class ShoppingListViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
     val price: TextView = mView.findViewById(R.id.price)
     val status: ImageView = mView.findViewById(R.id.img_status)
     val name: TextView = mView.findViewById(R.id.name)
-    var mItem: ShopListingResponse? = null
+    lateinit var shopListingResponse: ShopListingResponse
 }

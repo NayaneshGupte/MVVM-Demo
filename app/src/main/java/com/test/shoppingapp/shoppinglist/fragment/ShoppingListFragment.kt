@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.test.networkmodule.response.ShopListingResponse
 import com.test.shoppingapp.OnListFragmentInteractionListener
 import com.test.shoppingapp.R
@@ -19,10 +18,9 @@ import com.test.shoppingapp.di.Injectable
 import com.test.shoppingapp.shoppinglist.ItemExtras
 import com.test.shoppingapp.shoppinglist.ShoppingListViewModel
 import com.test.shoppingapp.shoppinglist.adapter.ShoppingListAdapter
-
 import javax.inject.Inject
 
-class ItemFragment : Fragment(), Injectable {
+class ShoppingListFragment : Fragment(), Injectable {
 
     @set:Inject
     internal var viewModelFactory: ViewModelProvider.Factory? = null
@@ -38,10 +36,9 @@ class ItemFragment : Fragment(), Injectable {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
-        // Set the adapter
         val context = view.context
         val recyclerView = view as RecyclerView
-        recyclerView.layoutManager = GridLayoutManager(context, 2)
+        recyclerView.layoutManager = GridLayoutManager(context, COLUMN_COUNT)
 
         shoppingListAdapter = ShoppingListAdapter(listener)
         recyclerView.adapter = shoppingListAdapter
@@ -69,8 +66,8 @@ class ItemFragment : Fragment(), Injectable {
             val itemExtras = arguments!!.getParcelable<ItemExtras>(ITEM_EXTRAS)
             val position = itemExtras!!.position
 
-            shoppingListViewModel!!.findListFromIndex(position)
-            shoppingListViewModel!!.getLiveDataForShoppingList(position)!!.observe(
+            shoppingListViewModel?.findListFromIndex(position)
+            shoppingListViewModel?.getLiveDataForShoppingList(position)!!.observe(
                 this,
                 Observer<List<ShopListingResponse>> {
                     if (it != null) {
@@ -94,13 +91,14 @@ class ItemFragment : Fragment(), Injectable {
 
         private const val ITEM_EXTRAS = "ITEM_EXTRAS"
 
-        fun newInstance(itemExtras: ItemExtras): ItemFragment {
+        private const val COLUMN_COUNT = 2
+
+        fun newInstance(itemExtras: ItemExtras): ShoppingListFragment {
             val args = Bundle()
             args.putParcelable(ITEM_EXTRAS, itemExtras)
-            val fragment = ItemFragment()
+            val fragment = ShoppingListFragment()
             fragment.arguments = args
             return fragment
         }
     }
-
 }

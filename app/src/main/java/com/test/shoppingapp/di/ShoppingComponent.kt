@@ -1,10 +1,10 @@
 package com.test.shoppingapp.di
 
-import android.app.Application
 import com.test.shoppingapp.ShoppingApplication
-import com.test.shoppingapp.network.NetworkModule
+import com.test.shoppingapp.network.NetworkSDKModule
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
@@ -13,16 +13,16 @@ import javax.inject.Singleton
     modules = [AndroidSupportInjectionModule::class,
         AppModule::class,
         ActivityBuilderModule::class,
-        NetworkModule::class]
+        NetworkSDKModule::class]
 )
-interface ShoppingComponent {
+interface ShoppingComponent : AndroidInjector<ShoppingApplication> {
 
-    fun inject(shoppingApplication: ShoppingApplication)
+    override fun inject(shoppingApplication: ShoppingApplication)
 
     @Component.Builder
     interface Builder {
         @BindsInstance
-        fun application(application: Application): Builder
+        fun application(application: ShoppingApplication): Builder
 
         fun build(): ShoppingComponent
     }

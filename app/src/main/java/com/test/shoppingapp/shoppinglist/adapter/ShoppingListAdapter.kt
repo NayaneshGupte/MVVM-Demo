@@ -34,24 +34,24 @@ class ShoppingListAdapter(private val listener: OnListFragmentInteractionListene
 
     override fun onBindViewHolder(holder: ShoppingListViewHolder, position: Int) {
         val shopListingResponse = shopListingResponses[position]
-        holder.mItem = shopListingResponse
-        holder.name.text = shopListingResponse.name()
-        holder.numLikes.text = shopListingResponse.numOfLikes().toString()
-        holder.numComments.text = shopListingResponse.numOfComments().toString()
-        holder.price.text = String.format("$%s", shopListingResponse.price().toString())
+        holder.shopListingResponse = shopListingResponse
+        holder.name.text = shopListingResponse.name
+        holder.numLikes.text = shopListingResponse.numOfLikes.toString()
+        holder.numComments.text = shopListingResponse.numOfComments.toString()
+        holder.price.text = String.format("$%s", shopListingResponse.price.toString())
 
-        if (ProductStatus.SOLD_OUT == shopListingResponse.status()) {
+        if (ProductStatus.SOLD_OUT == shopListingResponse.status) {
             holder.status.visibility = View.VISIBLE
         } else {
             holder.status.visibility = View.GONE
         }
 
         Glide.with(holder.imageProduct)
-            .load(shopListingResponse.photo())
+            .load(shopListingResponse.photo)
             .into(holder.imageProduct)
 
         holder.mView.setOnClickListener {
-            listener?.onListFragmentInteraction(holder.mItem!!)
+            listener?.onListFragmentInteraction(holder.shopListingResponse)
         }
     }
 

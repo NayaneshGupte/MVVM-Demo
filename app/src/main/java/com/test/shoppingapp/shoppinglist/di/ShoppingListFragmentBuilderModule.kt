@@ -1,6 +1,6 @@
 package com.test.shoppingapp.shoppinglist.di
 
-import com.test.shoppingapp.shoppinglist.fragment.ItemFragment
+import com.test.shoppingapp.shoppinglist.fragment.ShoppingListFragment
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -9,5 +9,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class ShoppingListFragmentBuilderModule {
 
     @ContributesAndroidInjector
-    internal abstract fun bindItemFragment(): ItemFragment
+    internal abstract fun bindItemFragment(): ShoppingListFragment
 }

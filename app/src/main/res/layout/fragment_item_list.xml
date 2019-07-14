@@ -10,5 +10,5 @@
     android:layout_marginRight="16dp"
     android:background="#ECECEC"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".shoppinglist.fragment.ItemFragment"
+    tools:context=".shoppinglist.fragment.ShoppingListFragment"
     tools:listitem="@layout/fragment_item" />

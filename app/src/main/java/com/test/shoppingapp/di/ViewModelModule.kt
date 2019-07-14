@@ -13,7 +13,7 @@ import dagger.multibindings.IntoMap
 internal abstract class ViewModelModule {
 
     @Binds
-    internal abstract fun bindViewModelFactory(factory: ShoppingViewModelFactory): ViewModelProvider.Factory
+    internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
 
     @Binds

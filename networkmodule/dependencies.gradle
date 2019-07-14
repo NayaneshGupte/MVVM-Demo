@@ -8,6 +8,9 @@ dependencies {
     implementation deps.retrofit.scalar
     implementation deps.retrofit.rxjava
     implementation deps.retrofit.gson
+    implementation deps.retrofit.moshi
+    implementation deps.retrofit.moshikotlin
+    implementation deps.retrofit.moshiconverter
     implementation(deps.retrofit.xml) {
         exclude module: 'stax'
         exclude module: 'stax-api'

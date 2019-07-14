@@ -1,50 +1,29 @@
 package com.test.shoppingapp
 
 
-import android.app.Activity
-import android.support.multidex.MultiDexApplication
 import com.test.networkmodule.NetworkSDK
-import com.test.shoppingapp.di.AppInjector
 import com.test.shoppingapp.di.DaggerShoppingComponent
+import com.test.shoppingapp.di.applyAutoInjector
 import dagger.Lazy
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
+import dagger.android.DaggerApplication
 import javax.inject.Inject
 
-class ShoppingApplication : MultiDexApplication(), HasActivityInjector {
+class ShoppingApplication : DaggerApplication() {
 
-    @set:Inject
-    var activityDispatchingAndroidInjector: DispatchingAndroidInjector<Activity>? = null
-
-    @set:Inject
-    var networkSDKLazy: Lazy<NetworkSDK>? = null
+    @Inject
+    lateinit var networkSDKLazy: Lazy<NetworkSDK>
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
         initializeDI()
-
     }
-
 
     private fun initializeDI() {
-        val shoppingComponent = DaggerShoppingComponent.builder()
-            .application(this)
-            .build()
-
-        shoppingComponent.inject(this)
-        AppInjector.init()
-        networkSDKLazy!!.get().initialize()
+        applyAutoInjector()
+        networkSDKLazy.get()?.initialize()
     }
 
-    override fun activityInjector(): AndroidInjector<Activity>? {
-        return activityDispatchingAndroidInjector
-    }
-
-    companion object {
-
-        var instance: ShoppingApplication? = null
-            private set
-    }
+    override fun applicationInjector() = DaggerShoppingComponent.builder()
+        .application(this)
+        .build()
 }

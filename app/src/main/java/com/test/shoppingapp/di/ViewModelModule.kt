@@ -19,5 +19,5 @@ internal abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(ShoppingListViewModel::class)
-    internal abstract fun bindShoppingListViewModel(homeViewModel: ShoppingListViewModel): ViewModel
+    internal abstract fun bindShoppingListViewModel(shoppingListViewModel: ShoppingListViewModel): ViewModel
 }

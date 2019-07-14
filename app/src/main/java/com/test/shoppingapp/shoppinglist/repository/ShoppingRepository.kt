@@ -22,6 +22,7 @@ constructor(private val shoppingAPI: ShoppingAPI) {
     private val mensShoppingList: MutableLiveData<List<ShopListingResponse>> = MutableLiveData()
     private val womensShoppingList: MutableLiveData<List<ShopListingResponse>> = MutableLiveData()
     private val allShoppingList: MutableLiveData<List<ShopListingResponse>> = MutableLiveData()
+    val errorData: MutableLiveData<String> = MutableLiveData()
 
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
@@ -68,6 +69,7 @@ constructor(private val shoppingAPI: ShoppingAPI) {
 
     private fun onApiError(throwable: Throwable) {
         Log.e(TAG, "Error " + throwable.message, throwable)
+        errorData.value = "Something went wrong!"
     }
 
     fun getMensShoppingList(): LiveData<List<ShopListingResponse>> {

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.test.networkmodule.response.ShopListingResponse
 import com.test.shoppingapp.OnListFragmentInteractionListener
 import com.test.shoppingapp.R
@@ -67,19 +68,21 @@ class ShoppingListFragment : Fragment(), Injectable {
             val position = itemExtras!!.position
 
             shoppingListViewModel?.findListFromIndex(position)
-            shoppingListViewModel?.getLiveDataForShoppingList(position)!!.observe(
-                this,
-                Observer<List<ShopListingResponse>> {
-                    if (it != null) {
-                        this.setShoppingListData(it)
-                    }
-                })
+            shoppingListViewModel?.getLiveDataForShoppingList(position)?.observe(
+                this, Observer { it -> it?.let { this.setShoppingListData(it) } })
+
+            shoppingListViewModel?.getErrorData()
+                ?.observe(this, Observer { t -> t?.let { showErrorToast(it) } })
         }
 
     }
 
     private fun setShoppingListData(shoppingContentList: List<ShopListingResponse>) {
-        shoppingListAdapter!!.setItems(shoppingContentList)
+        shoppingListAdapter?.setItems(shoppingContentList)
+    }
+
+    private fun showErrorToast(errorMessage: String) {
+        Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDetach() {

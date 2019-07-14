@@ -33,6 +33,10 @@ constructor(private val shoppingRepository: ShoppingRepository) : ViewModel() {
         return null
     }
 
+    fun getErrorData(): LiveData<String> {
+        return shoppingRepository.errorData
+    }
+
     override fun onCleared() {
         super.onCleared()
         shoppingRepository.onCleared()

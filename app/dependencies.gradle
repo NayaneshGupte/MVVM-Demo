@@ -10,24 +10,13 @@ dependencies {
     implementation deps.support_lib.vector_drawable
 
     implementation deps.multidex
-    api deps.constraint_layout // Need to expose to app module for data binding
+    api deps.constraint_layout
 
 
     // RX Java
     implementation deps.rxjava.main
     implementation deps.rxjava.android
 
-    implementation deps.gson
-
-    // Retrofit and GSON
-    implementation deps.retrofit.main
-    implementation deps.retrofit.rxjava
-    implementation deps.retrofit.gson
-    implementation(deps.retrofit.xml) {
-        exclude module: 'stax'
-        exclude module: 'stax-api'
-        exclude module: 'xpp3'
-    }
 
     // Dagger2
     implementation deps.dagger.main
@@ -49,16 +38,6 @@ dependencies {
 
     // internal modules
     implementation deps.internal.networkmodule
-
-    //Auto value
-    implementation deps.auto_value.annotations
-    kapt deps.auto_value.compiler
-    implementation deps.auto_value_gson.annotations
-    // included again as annotation processor because of
-    // an issue https://github.com/rharter/auto-value-gson/issues/171
-    kapt deps.auto_value.annotations
-    kapt deps.auto_value_gson.compiler
-    kapt deps.auto_value_parcel
 
 
     testImplementation deps.kotlin.std_lib

@@ -25,9 +25,6 @@ versions.multidex = '1.0.3'
 
 // alphabetical order for the rest
 versions.android_processes = '1.0.9'
-versions.auto_value = '1.6'
-versions.auto_value_gson = '0.7.0'
-versions.auto_value_parcel = '0.2.5'
 versions.dagger = '2.15'
 versions.glide = '4.9.0'
 versions.okhttp_integration = '4.3.1@aar'

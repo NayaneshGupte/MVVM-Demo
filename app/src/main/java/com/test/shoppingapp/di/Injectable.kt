@@ -15,6 +15,9 @@ import dagger.android.support.HasSupportFragmentInjector
  */
 interface Injectable
 
+/**
+ * Kotlin extension functions
+ */
 fun Application.applyAutoInjector() = registerActivityLifecycleCallbacks(
     object : Application.ActivityLifecycleCallbacks {
 

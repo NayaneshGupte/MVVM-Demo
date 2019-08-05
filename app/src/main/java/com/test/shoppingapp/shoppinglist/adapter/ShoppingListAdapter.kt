@@ -1,6 +1,6 @@
 package com.test.shoppingapp.shoppinglist.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import java.util.*
 
 
 class ShoppingListAdapter(private val listener: OnListFragmentInteractionListener?) :
-    RecyclerView.Adapter<ShoppingListViewHolder>() {
+    androidx.recyclerview.widget.RecyclerView.Adapter<ShoppingListViewHolder>() {
 
     private val shopListingResponses: MutableList<ShopListingResponse>
 

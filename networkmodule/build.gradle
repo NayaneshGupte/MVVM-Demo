@@ -11,7 +11,7 @@ android {
         targetSdkVersion versions.target_sdk
         versionCode versions.app_version
         versionName "$versions.app_major.$versions.ap_minor.$versions.app_patch"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {

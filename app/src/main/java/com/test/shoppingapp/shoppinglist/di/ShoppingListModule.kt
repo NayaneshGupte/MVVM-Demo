@@ -1,6 +1,6 @@
 package com.test.shoppingapp.shoppinglist.di
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 import com.test.shoppingapp.shoppinglist.ShoppingListActivity
 

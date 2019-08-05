@@ -1,8 +1,8 @@
 package com.test.shoppingapp.shoppinglist.repository
 
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import android.util.Log
 import com.test.networkmodule.api.ShoppingAPI
 import com.test.networkmodule.response.ShopListingResponse

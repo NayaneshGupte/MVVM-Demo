@@ -10,7 +10,7 @@ android {
         applicationId "com.test.shoppingapp"
         minSdkVersion versions.min_sdk
         targetSdkVersion versions.target_sdk
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         versionCode versions.app_version
         versionName "$versions.app_major.$versions.app_minor.$versions.app_patch"
 

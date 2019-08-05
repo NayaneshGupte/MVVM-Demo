@@ -1,10 +1,10 @@
 package com.test.shoppingapp.shoppinglist
 
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.Snackbar
-import android.support.v4.view.ViewPager
-import android.support.v7.widget.Toolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.widget.Toolbar
 import android.widget.Toast
 
 import com.test.networkmodule.response.ShopListingResponse
@@ -27,7 +27,7 @@ class ShoppingListActivity : BaseActivity(), OnListFragmentInteractionListener {
                 .setAction("Action", null).show()
         }
 
-        val pager = findViewById<ViewPager>(R.id.pager)
+        val pager = findViewById<androidx.viewpager.widget.ViewPager>(R.id.pager)
 
         pager.offscreenPageLimit = 2
         pager.adapter = ShoppingListPagerAdapter(supportFragmentManager)

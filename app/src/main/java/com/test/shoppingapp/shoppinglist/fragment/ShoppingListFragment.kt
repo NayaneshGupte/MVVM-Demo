@@ -1,13 +1,13 @@
 package com.test.shoppingapp.shoppinglist.fragment
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +21,7 @@ import com.test.shoppingapp.shoppinglist.ShoppingListViewModel
 import com.test.shoppingapp.shoppinglist.adapter.ShoppingListAdapter
 import javax.inject.Inject
 
-class ShoppingListFragment : Fragment(), Injectable {
+class ShoppingListFragment : androidx.fragment.app.Fragment(), Injectable {
 
     @set:Inject
     internal var viewModelFactory: ViewModelProvider.Factory? = null
@@ -38,8 +38,9 @@ class ShoppingListFragment : Fragment(), Injectable {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
 
         val context = view.context
-        val recyclerView = view as RecyclerView
-        recyclerView.layoutManager = GridLayoutManager(context, COLUMN_COUNT)
+        val recyclerView = view as androidx.recyclerview.widget.RecyclerView
+        recyclerView.layoutManager =
+            androidx.recyclerview.widget.GridLayoutManager(context, COLUMN_COUNT)
 
         shoppingListAdapter = ShoppingListAdapter(listener)
         recyclerView.adapter = shoppingListAdapter

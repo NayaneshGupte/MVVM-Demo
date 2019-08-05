@@ -1,6 +1,6 @@
 package com.test.shoppingapp.shoppinglist
 
-import android.support.annotation.StringDef
+import androidx.annotation.StringDef
 
 @StringDef
 annotation class ProductStatus {

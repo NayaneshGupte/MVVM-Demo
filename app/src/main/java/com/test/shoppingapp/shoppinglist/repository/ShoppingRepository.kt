@@ -3,12 +3,12 @@ package com.test.shoppingapp.shoppinglist.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import android.util.Log
 import com.test.networkmodule.api.ShoppingAPI
 import com.test.networkmodule.response.ShopListingResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -68,7 +68,7 @@ constructor(private val shoppingAPI: ShoppingAPI) {
     }
 
     private fun onApiError(throwable: Throwable) {
-        Log.e(TAG, "Error " + throwable.message, throwable)
+        Timber.tag(TAG).e(throwable)
         errorData.value = "Something went wrong!"
     }
 

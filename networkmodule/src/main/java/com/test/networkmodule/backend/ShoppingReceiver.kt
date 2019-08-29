@@ -27,14 +27,14 @@ constructor(private val shoppingRetrofitAPI: ShoppingRetrofitAPI) {
 
     private fun getShoppingListResponse(response: Response<List<ShopListingResponse>>): List<ShopListingResponse> {
         return when {
-            response.isSuccessful -> response.body()
+            response.isSuccessful -> response.body()!!
             else -> throw ApiException("Content not available")
         }
     }
 
     private fun getMasterResponse(response: Response<List<MasterListResponse>>): List<MasterListResponse> {
         return when {
-            response.isSuccessful -> response.body()
+            response.isSuccessful -> response.body()!!
             else -> throw ApiException("Master API Failure")
         }
     }

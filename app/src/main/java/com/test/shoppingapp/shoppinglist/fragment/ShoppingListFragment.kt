@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import com.test.networkmodule.response.ShopListingResponse
 import com.test.shoppingapp.OnListFragmentInteractionListener
 import com.test.shoppingapp.R
@@ -37,8 +38,7 @@ class ShoppingListFragment : Fragment(), Injectable {
 
         val context = view.context
         val recyclerView = view as androidx.recyclerview.widget.RecyclerView
-        recyclerView.layoutManager =
-            androidx.recyclerview.widget.GridLayoutManager(context, COLUMN_COUNT)
+        recyclerView.layoutManager = GridLayoutManager(context, COLUMN_COUNT)
 
         shoppingListAdapter = ShoppingListAdapter(listener)
         recyclerView.adapter = shoppingListAdapter

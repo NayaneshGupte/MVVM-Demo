@@ -1,17 +1,15 @@
 package com.test.shoppingapp.shoppinglist.fragment
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.test.networkmodule.response.ShopListingResponse
 import com.test.shoppingapp.OnListFragmentInteractionListener
 import com.test.shoppingapp.R
@@ -21,7 +19,7 @@ import com.test.shoppingapp.shoppinglist.ShoppingListViewModel
 import com.test.shoppingapp.shoppinglist.adapter.ShoppingListAdapter
 import javax.inject.Inject
 
-class ShoppingListFragment : androidx.fragment.app.Fragment(), Injectable {
+class ShoppingListFragment : Fragment(), Injectable {
 
     @set:Inject
     internal var viewModelFactory: ViewModelProvider.Factory? = null

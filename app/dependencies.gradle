@@ -1,22 +1,27 @@
 dependencies {
-    // Android Support dependencies
-    implementation deps.support_lib.support_annotations
-    implementation deps.support_lib.cardview
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //Support
     implementation deps.support_lib.design
+    implementation deps.support_lib.appcompat
+    implementation deps.support_lib.support_annotations
     implementation deps.support_lib.recyclerview
-    implementation deps.support_lib.support_v4
-    implementation deps.support_lib.customtabs
-    implementation deps.support_lib.preference
-    implementation deps.support_lib.vector_drawable
+    implementation deps.support_lib.cardview
+    implementation deps.constraint_layout
+
+    // internal modules
+    implementation deps.internal.networkmodule
 
     implementation deps.multidex
-    api deps.constraint_layout
 
-
-    // RX Java
-    implementation deps.rxjava.main
     implementation deps.rxjava.android
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    implementation deps.rxjava.main
 
+    // Glide
+    implementation deps.glide.runtime
+    implementation deps.glide.okhttp_integration
+    kapt deps.glide.compiler
 
     // Dagger2
     implementation deps.dagger.main
@@ -25,28 +30,41 @@ dependencies {
     kapt deps.dagger.android_processor
     implementation deps.dagger.android_support
 
-
-    // Glide
-    api deps.glide.runtime // api because of data binding
-    kapt deps.glide.compiler
-    implementation deps.glide.okhttp_integration
-
-    // ViewModel
+    // Viewmodel
     implementation deps.lifecycle.extensions
-    implementation deps.lifecycle.reactivestreams
     kapt deps.lifecycle.compiler
-
-    // internal modules
-    implementation deps.internal.networkmodule
+    implementation deps.lifecycle.viewmodel_ktx
 
 
-    testImplementation deps.kotlin.std_lib
-    testImplementation deps.lifecycle.testing
+    // Logger
+    implementation deps.timber
 
-    implementation deps.kotlin.std_lib
-    implementation deps.kotlin.coroutine
+    // Test
+    testImplementation deps.junit
+    androidTestImplementation deps.findbugs_jsr
+    testImplementation deps.mockito.core
+    androidTestImplementation deps.mockito.android
+    testImplementation deps.mockito.kotlin
+    testImplementation deps.mockito.inline
+    testImplementation deps.robolectric
+    testImplementation deps.arch_core_testing
+    // Espresso
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.idling_resource
+    androidTestImplementation deps.android_test.rules
+    androidTestImplementation deps.android_test.runner
+    androidTestImplementation deps.android_test.junit
+    // Assertion library: https://truth.dev/
+    testImplementation deps.truth
+
+    implementation deps.moshi.kotlin
+    kapt deps.moshi.codegen
+
+    kapt deps.databinding
+
+    implementation deps.coroutines.core
+    implementation deps.coroutines.rx2
+    implementation deps.coroutines.android
+    testImplementation deps.coroutines.test
 }
-
-
-
-

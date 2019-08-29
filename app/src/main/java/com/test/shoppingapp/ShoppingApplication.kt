@@ -1,7 +1,7 @@
 package com.test.shoppingapp
 
 
-import com.test.networkmodule.NetworkSDK
+import com.test.networkmodule.DataProvider
 import com.test.shoppingapp.di.DaggerShoppingComponent
 import com.test.shoppingapp.di.applyAutoInjector
 import dagger.Lazy
@@ -11,7 +11,7 @@ import javax.inject.Inject
 class ShoppingApplication : DaggerApplication() {
 
     @Inject
-    lateinit var networkSDKLazy: Lazy<NetworkSDK>
+    lateinit var dataProviderLazy: Lazy<DataProvider>
 
     override fun onCreate() {
         super.onCreate()
@@ -20,7 +20,8 @@ class ShoppingApplication : DaggerApplication() {
 
     private fun initializeDI() {
         applyAutoInjector()
-        networkSDKLazy.get()?.initialize()
+        val networkSDK = DataProvider
+        dataProviderLazy.get()?.initialize()
     }
 
     override fun applicationInjector() = DaggerShoppingComponent.builder()

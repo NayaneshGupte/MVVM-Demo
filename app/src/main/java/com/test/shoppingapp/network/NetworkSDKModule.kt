@@ -1,6 +1,6 @@
 package com.test.shoppingapp.network
 
-import com.test.networkmodule.NetworkSDK
+import com.test.networkmodule.DataProvider
 import com.test.networkmodule.api.ShoppingAPI
 import dagger.Module
 import dagger.Provides
@@ -11,13 +11,13 @@ class NetworkSDKModule {
 
     @Provides
     @Singleton
-    fun provideNetworkSDK(): NetworkSDK {
-        return NetworkSDK.instance
+    fun provideNetworkSDK(): DataProvider {
+        return DataProvider.instance
     }
 
     @Provides
     @Singleton
-    fun provideShoppingAPI(networkSDK: NetworkSDK): ShoppingAPI {
-        return networkSDK.shoppingAPI
+    fun provideShoppingAPI(dataProvider: DataProvider): ShoppingAPI {
+        return dataProvider.shoppingAPI
     }
 }

@@ -4,8 +4,8 @@ import android.app.Activity
 import android.app.Application
 import android.os.Bundle
 import dagger.android.AndroidInjection
+import dagger.android.HasAndroidInjector
 import dagger.android.support.AndroidSupportInjection
-import dagger.android.support.HasSupportFragmentInjector
 
 /**
  * Marks an activity / fragment injectable.
@@ -48,7 +48,7 @@ fun Application.applyAutoInjector() = registerActivityLifecycleCallbacks(
     })
 
 private fun handleActivity(activity: Activity) {
-    if (activity is Injectable || activity is HasSupportFragmentInjector) {
+    if (activity is Injectable || activity is HasAndroidInjector) {
         AndroidInjection.inject(activity)
     }
     if (activity is androidx.fragment.app.FragmentActivity) {

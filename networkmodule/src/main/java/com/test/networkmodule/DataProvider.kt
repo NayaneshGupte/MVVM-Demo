@@ -3,12 +3,12 @@ package com.test.networkmodule
 
 import com.test.networkmodule.api.ShoppingAPI
 import com.test.networkmodule.api.ShoppingAPIImpl
-import com.test.networkmodule.di.DaggerNetworkComponent
+import com.test.networkmodule.di.DaggerDataProviderComponent
 import com.test.networkmodule.exceptions.SDKNotInitializedException
 import dagger.Lazy
 import javax.inject.Inject
 
-class NetworkSDK {
+class DataProvider private constructor() {
 
     @Inject
     lateinit var shoppingAPILazy: Lazy<ShoppingAPIImpl>
@@ -25,19 +25,19 @@ class NetworkSDK {
         }
 
     fun initialize() {
-        val sdkComponent = DaggerNetworkComponent.builder()
+        val dataProviderComponent = DaggerDataProviderComponent.builder()
             .build()
-        sdkComponent.inject(this)
+        dataProviderComponent.inject(this)
         isSDKInitialized = true
     }
 
     companion object {
-        private var INSTANCE: NetworkSDK? = null
+        private var INSTANCE: DataProvider? = null
 
-        val instance: NetworkSDK
+        val instance: DataProvider
             get() {
                 when (INSTANCE) {
-                    null -> INSTANCE = NetworkSDK()
+                    null -> INSTANCE = DataProvider()
                 }
                 return INSTANCE!!
             }

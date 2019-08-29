@@ -7,20 +7,21 @@ import androidx.appcompat.app.AppCompatActivity
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-open class BaseActivity : AppCompatActivity(), HasSupportFragmentInjector {
+open class BaseActivity : AppCompatActivity(), HasAndroidInjector {
 
-    @set:Inject
-    internal var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>? = null
+    @Inject
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState, persistentState)
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment>? {
-        return fragmentDispatchingAndroidInjector
+    override fun androidInjector(): AndroidInjector<Any>? {
+        return androidInjector
     }
 }

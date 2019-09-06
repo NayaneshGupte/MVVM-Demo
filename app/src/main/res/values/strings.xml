@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Mercari Demo</string>
+    <string name="app_name">MVVM Demo</string>
     <string name="action_settings">Settings</string>
 </resources>

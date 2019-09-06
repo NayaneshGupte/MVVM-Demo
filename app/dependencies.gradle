@@ -48,6 +48,8 @@ dependencies {
     testImplementation deps.mockito.inline
     testImplementation deps.robolectric
     testImplementation deps.arch_core_testing
+    testImplementation deps.rx_idler
+    androidTestImplementation deps.rx_idler
     // Espresso
     androidTestImplementation deps.espresso.core
     androidTestImplementation deps.espresso.contrib
@@ -55,6 +57,13 @@ dependencies {
     androidTestImplementation deps.android_test.rules
     androidTestImplementation deps.android_test.runner
     androidTestImplementation deps.android_test.junit
+
+    testImplementation deps.espresso.core
+    testImplementation deps.espresso.contrib
+    testImplementation deps.espresso.idling_resource
+    testImplementation deps.android_test.rules
+    testImplementation deps.android_test.runner
+    testImplementation deps.android_test.junit
     // Assertion library: https://truth.dev/
     testImplementation deps.truth
 

@@ -40,7 +40,7 @@ constructor(private val shoppingAPI: ShoppingAPI) {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { this.onWoensListReceived(it) },
+                { this.onWomensListReceived(it) },
                 { this.onApiError(it) })
         compositeDisposable.addAll(disposable)
     }
@@ -59,7 +59,7 @@ constructor(private val shoppingAPI: ShoppingAPI) {
         mensShoppingList.value = shopListingResponse
     }
 
-    private fun onWoensListReceived(shopListingResponse: List<ShopListingResponse>) {
+    private fun onWomensListReceived(shopListingResponse: List<ShopListingResponse>) {
         womensShoppingList.value = shopListingResponse
     }
 

@@ -2,6 +2,7 @@ package com.test.networkmodule.retrofitapi
 
 
 import com.test.networkmodule.response.MasterListResponse
+import com.test.networkmodule.response.Page
 import com.test.networkmodule.response.ShopListingResponse
 
 import io.reactivex.Single
@@ -16,4 +17,7 @@ interface ShoppingRetrofitAPI {
 
     @GET
     fun getMasterListResponse(@Url url: String): Single<Response<List<MasterListResponse>>>
+
+    @GET
+    fun getPageResponse(@Url url: String): Single<Response<Page>>
 }

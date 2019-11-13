@@ -1,6 +1,7 @@
 package com.test.networkmodule.api
 
 
+import com.test.networkmodule.response.Page
 import com.test.networkmodule.response.ShopListingResponse
 
 import io.reactivex.Single
@@ -17,4 +18,6 @@ interface ShoppingAPI {
     val shoppingListForWomen: Single<List<ShopListingResponse>>
 
     val shoppingListForAll: Single<List<ShopListingResponse>>
+
+    val getPage: Single<Page>
 }

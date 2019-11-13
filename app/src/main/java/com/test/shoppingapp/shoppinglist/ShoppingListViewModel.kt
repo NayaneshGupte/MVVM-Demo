@@ -5,21 +5,26 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 
 import com.test.networkmodule.response.ShopListingResponse
+import com.test.shoppingapp.shoppinglist.repository.PageRepositiory
 import com.test.shoppingapp.shoppinglist.repository.ShoppingRepository
 
 import javax.inject.Inject
 
 class ShoppingListViewModel @Inject
-constructor(private val shoppingRepository: ShoppingRepository) : ViewModel() {
+constructor(private val shoppingRepository: ShoppingRepository, private val pageRepositiory: PageRepositiory) : ViewModel() {
 
     fun findListFromIndex(position: Int) {
-        when (position) {
-            ALL -> shoppingRepository.getShoppingListForAll()
 
-            MEN -> shoppingRepository.getShoppingListForMen()
+        pageRepositiory.getPageData()
 
-            WOMEN -> shoppingRepository.getShoppingListForWomen()
-        }
+
+//        when (position) {
+//            ALL -> shoppingRepository.getShoppingListForAll()
+//
+//            MEN -> shoppingRepository.getShoppingListForMen()
+//
+//            WOMEN -> shoppingRepository.getShoppingListForWomen()
+//        }
     }
 
     fun getLiveDataForShoppingList(position: Int): LiveData<List<ShopListingResponse>>? {

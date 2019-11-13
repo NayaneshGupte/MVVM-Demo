@@ -1,7 +1,9 @@
 package com.test.networkmodule.api
 
 
+import com.test.networkmodule.backend.OkHttpTestReceiver
 import com.test.networkmodule.backend.ShoppingReceiver
+import com.test.networkmodule.response.Page
 import com.test.networkmodule.response.ShopListingResponse
 import io.reactivex.Single
 import javax.inject.Inject
@@ -16,7 +18,8 @@ import javax.inject.Singleton
  */
 @Singleton
 class ShoppingAPIImpl @Inject
-constructor(private val shoppingReceiverProvider: Provider<ShoppingReceiver>) : ShoppingAPI {
+constructor(private val shoppingReceiverProvider: Provider<ShoppingReceiver>,
+            private val okHttpTestReceiverProvider: Provider<OkHttpTestReceiver>) : ShoppingAPI {
 
     override val shoppingListForMen: Single<List<ShopListingResponse>>
         get() = shoppingReceiverProvider.get().getShoppingList("Men")
@@ -26,4 +29,7 @@ constructor(private val shoppingReceiverProvider: Provider<ShoppingReceiver>) : 
 
     override val shoppingListForAll: Single<List<ShopListingResponse>>
         get() = shoppingReceiverProvider.get().getShoppingList("All")
+
+    override val getPage: Single<Page>
+        get() = okHttpTestReceiverProvider.get().getPage()
 }

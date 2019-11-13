@@ -1,7 +1,7 @@
 package com.test.networkmodule.di
 
 import com.test.networkmodule.DataProvider
-import com.test.networkmodule.di.network.CommonNetworkModule
+import com.test.networkmodule.network.CommonNetworkModule
 import dagger.Component
 import javax.inject.Singleton
 
